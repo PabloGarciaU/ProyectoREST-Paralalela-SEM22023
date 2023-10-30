@@ -1,12 +1,12 @@
 {
-    "openapi": "3.0.1",
+    "openapi": "1.0.0",
     "info": {
       "title": "API para reserva de salas",
-      "description": "Aplicación de ejemplo para explicar el funcionamiento de servicios REST",
+      "description": "Computacion paralela y distribuida",
       "contact": {
-        "name": "Sebastián Salazar Molina",
-        "url": "https://sebastian.cl",
-        "email": "sebasalazar@gmail.com"
+        "name": "",
+        "url": "",
+        "email": ""
       },
       "license": {
         "name": "CC BY-NC-ND 4.0 DEED",
@@ -16,8 +16,8 @@
     },
     "servers": [
       {
-        "url": "https://api.sebastian.cl/booking",
-        "description": "Generated server url"
+        "url": "",
+        "description": ""
       }
     ],
     "security": [
