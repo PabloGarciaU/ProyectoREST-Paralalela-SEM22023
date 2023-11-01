@@ -1,147 +1,179 @@
 {
-    "openapi": "1.0.0",
-    "info": {
-      "title": "API para reserva de salas",
-      "description": "Computacion paralela y distribuida",
-      "contact": {
-        "name": "",
-        "url": "",
-        "email": ""
-      },
-      "license": {
-        "name": "CC BY-NC-ND 4.0 DEED",
-        "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
-      },
-      "version": "0.9.9"
+  "openapi": "3.0.1",
+  "info": {
+    "title": "API para reserva de salas",
+    "description": "Aplicación de ejemplo para explicar el funcionamiento de servicios REST",
+    "contact": {
+      "name": "Sebastián Salazar Molina",
+      "url": "https://sebastian.cl",
+      "email": "sebasalazar@gmail.com"
     },
-    "servers": [
-      {
-        "url": "",
-        "description": ""
-      }
-    ],
-    "security": [
-      {
-        "bearerAuth": []
-      }
-    ],
-    "paths": {
-      "/v1/reserve/search": {
-        "post": {
-          "tags": [
-            "reserve-rest"
-          ],
-          "operationId": "reserve",
-          "parameters": [
-            {
-              "name": "Authorization",
-              "in": "header",
-              "required": true,
+    "license": {
+      "name": "CC BY-NC-ND 4.0 DEED",
+      "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+    },
+    "version": "0.9.9"
+  },
+  "servers": [
+    {
+      "url": "https://api.sebastian.cl/booking",
+      "description": "Generated server url"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/v1/reserve/search": {
+      "post": {
+        "tags": [
+          "reserve-rest"
+        ],
+        "operationId": "reserve",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
               "schema": {
-                "type": "string"
+                "$ref": "#/components/schemas/Search"
               }
             }
-          ],
-          "requestBody": {
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Search"
-                }
-              }
-            },
-            "required": true
-          },
-          "responses": {
-            "200": {
-              "description": "OK",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/Booking"
-                    }
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Booking"
                   }
                 }
               }
             }
           }
         }
-      },
-      "/v1/reserve/request": {
-        "post": {
-          "tags": [
-            "reserve-rest"
-          ],
-          "operationId": "reserve_1",
-          "parameters": [
-            {
-              "name": "Authorization",
-              "in": "header",
-              "required": true,
+      }
+    },
+    "/v1/reserve/request": {
+      "post": {
+        "tags": [
+          "reserve-rest"
+        ],
+        "operationId": "reserve_1",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
               "schema": {
-                "type": "string"
+                "$ref": "#/components/schemas/Request"
               }
             }
-          ],
-          "requestBody": {
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Request"
-                }
-              }
-            },
-            "required": true
-          },
-          "responses": {
-            "200": {
-              "description": "OK",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/Booking"
-                    }
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Booking"
                   }
                 }
               }
             }
           }
         }
-      },
-      "/v1/rooms/{roomCode}": {
-        "get": {
-          "tags": [
-            "room-rest"
-          ],
-          "operationId": "getRoom",
-          "parameters": [
-            {
-              "name": "Authorization",
-              "in": "header",
-              "required": true,
-              "schema": {
-                "type": "string"
-              }
-            },
-            {
-              "name": "roomCode",
-              "in": "path",
-              "required": true,
-              "schema": {
-                "type": "string"
+      }
+    },
+    "/v1/rooms/{roomCode}": {
+      "get": {
+        "tags": [
+          "room-rest"
+        ],
+        "operationId": "getRoom",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "roomCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Room"
+                }
               }
             }
-          ],
-          "responses": {
-            "200": {
-              "description": "OK",
-              "content": {
-                "application/json": {
-                  "schema": {
+          }
+        }
+      }
+    },
+    "/v1/rooms/": {
+      "get": {
+        "tags": [
+          "room-rest"
+        ],
+        "operationId": "getRooms",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
                     "$ref": "#/components/schemas/Room"
                   }
                 }
@@ -149,278 +181,246 @@
             }
           }
         }
-      },
-      "/v1/rooms/": {
-        "get": {
-          "tags": [
-            "room-rest"
-          ],
-          "operationId": "getRooms",
-          "parameters": [
-            {
-              "name": "Authorization",
-              "in": "header",
-              "required": true,
-              "schema": {
-                "type": "string"
-              }
+      }
+    },
+    "/v1/reserve/{roomCode}/schedule/{isoDate}": {
+      "get": {
+        "tags": [
+          "reserve-rest"
+        ],
+        "operationId": "schedule",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
-          ],
-          "responses": {
-            "200": {
-              "description": "OK",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/Room"
-                    }
+          },
+          {
+            "name": "roomCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "isoDate",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Booking"
                   }
                 }
               }
-            }
-          }
-        }
-      },
-      "/v1/reserve/{roomCode}/schedule/{isoDate}": {
-        "get": {
-          "tags": [
-            "reserve-rest"
-          ],
-          "operationId": "schedule",
-          "parameters": [
-            {
-              "name": "Authorization",
-              "in": "header",
-              "required": true,
-              "schema": {
-                "type": "string"
-              }
-            },
-            {
-              "name": "roomCode",
-              "in": "path",
-              "required": true,
-              "schema": {
-                "type": "string"
-              }
-            },
-            {
-              "name": "isoDate",
-              "in": "path",
-              "required": true,
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "OK",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/Booking"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "/v1/reserve/{token}/cancel": {
-        "delete": {
-          "tags": [
-            "reserve-rest"
-          ],
-          "operationId": "cancel",
-          "parameters": [
-            {
-              "name": "Authorization",
-              "in": "header",
-              "required": true,
-              "schema": {
-                "type": "string"
-              }
-            },
-            {
-              "name": "token",
-              "in": "path",
-              "required": true,
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "OK"
             }
           }
         }
       }
     },
-    "components": {
-      "schemas": {
-        "Search": {
-          "type": "object",
-          "properties": {
-            "roomCode": {
-              "type": "string",
-              "description": "Código de la sala",
-              "example": "R01"
-            },
-            "bookingToken": {
-              "type": "string",
-              "description": "Token de la reserva",
-              "example": "04970361-579d-47a1-bef5-efb7fd89d749"
-            },
-            "date": {
-              "type": "string",
-              "description": "Fecha de la solicitud",
-              "format": "date"
-            }
-          }
-        },
-        "Booking": {
-          "required": [
-            "end",
-            "roomCode",
-            "start",
-            "token",
-            "userEmail"
-          ],
-          "type": "object",
-          "properties": {
-            "token": {
-              "type": "string",
-              "description": "Token único de la solicitud",
-              "example": "20e74269-8cff-4dce-9062-7befb44a43ff"
-            },
-            "userEmail": {
-              "type": "string",
-              "description": "Correo electrónico del solicitante",
-              "example": "jperez@correo.cl"
-            },
-            "roomCode": {
-              "type": "string",
-              "description": "Código de la sala",
-              "example": "R01"
-            },
-            "start": {
-              "type": "string",
-              "description": "Fecha de inicio de la solicitud",
-              "format": "date-time"
-            },
-            "end": {
-              "type": "string",
-              "description": "Fecha de término de la solicitud",
-              "format": "date-time"
-            }
-          }
-        },
-        "LocalTime": {
-          "type": "object",
-          "properties": {
-            "hour": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "minute": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "second": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "nano": {
-              "type": "integer",
-              "format": "int32"
+    "/v1/reserve/{token}/cancel": {
+      "delete": {
+        "tags": [
+          "reserve-rest"
+        ],
+        "operationId": "cancel",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           },
-          "description": "Tiempo de inicio",
-          "example": 61200
-        },
-        "Request": {
-          "required": [
-            "date",
-            "quantity",
-            "roomCode",
-            "start"
-          ],
-          "type": "object",
-          "properties": {
-            "roomCode": {
-              "type": "string",
-              "description": "Código de la sala",
-              "example": "R01"
-            },
-            "date": {
-              "type": "string",
-              "description": "Fecha de la solicitud",
-              "format": "date"
-            },
-            "start": {
-              "$ref": "#/components/schemas/LocalTime"
-            },
-            "quantity": {
-              "type": "integer",
-              "description": "Cantidad de horas para reservar",
-              "format": "int32",
-              "example": 1
+          {
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
-        },
-        "Room": {
-          "required": [
-            "capacity",
-            "code",
-            "description",
-            "location",
-            "name"
-          ],
-          "type": "object",
-          "properties": {
-            "code": {
-              "type": "string",
-              "description": "Código de la sala",
-              "example": "R01"
-            },
-            "location": {
-              "type": "string",
-              "description": "Ubicación de la sala",
-              "example": "Biblioteca"
-            },
-            "name": {
-              "type": "string",
-              "description": "Nombre de la sala",
-              "example": "Sala A"
-            },
-            "capacity": {
-              "type": "integer",
-              "description": "Capacidad de la sala",
-              "format": "int32",
-              "example": 1
-            },
-            "description": {
-              "type": "string",
-              "description": "Descripción de la sala",
-              "example": "Sala de estudio facilitada por hora"
-            }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
           }
-        }
-      },
-      "securitySchemes": {
-        "bearerAuth": {
-          "type": "http",
-          "scheme": "bearer",
-          "bearerFormat": "JWT"
         }
       }
     }
+  },
+  "components": {
+    "schemas": {
+      "Search": {
+        "type": "object",
+        "properties": {
+          "roomCode": {
+            "type": "string",
+            "description": "Código de la sala",
+            "example": "R01"
+          },
+          "bookingToken": {
+            "type": "string",
+            "description": "Token de la reserva",
+            "example": "04970361-579d-47a1-bef5-efb7fd89d749"
+          },
+          "date": {
+            "type": "string",
+            "description": "Fecha de la solicitud",
+            "format": "date"
+          }
+        }
+      },
+      "Booking": {
+        "required": [
+          "end",
+          "roomCode",
+          "start",
+          "token",
+          "userEmail"
+        ],
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string",
+            "description": "Token único de la solicitud",
+            "example": "20e74269-8cff-4dce-9062-7befb44a43ff"
+          },
+          "userEmail": {
+            "type": "string",
+            "description": "Correo electrónico del solicitante",
+            "example": "jperez@correo.cl"
+          },
+          "roomCode": {
+            "type": "string",
+            "description": "Código de la sala",
+            "example": "R01"
+          },
+          "start": {
+            "type": "string",
+            "description": "Fecha de inicio de la solicitud",
+            "format": "date-time"
+          },
+          "end": {
+            "type": "string",
+            "description": "Fecha de término de la solicitud",
+            "format": "date-time"
+          }
+        }
+      },
+      "LocalTime": {
+        "type": "object",
+        "properties": {
+          "hour": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "minute": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "second": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nano": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "description": "Tiempo de inicio",
+        "example": 61200
+      },
+      "Request": {
+        "required": [
+          "date",
+          "quantity",
+          "roomCode",
+          "start"
+        ],
+        "type": "object",
+        "properties": {
+          "roomCode": {
+            "type": "string",
+            "description": "Código de la sala",
+            "example": "R01"
+          },
+          "date": {
+            "type": "string",
+            "description": "Fecha de la solicitud",
+            "format": "date"
+          },
+          "start": {
+            "$ref": "#/components/schemas/LocalTime"
+          },
+          "quantity": {
+            "type": "integer",
+            "description": "Cantidad de horas para reservar",
+            "format": "int32",
+            "example": 1
+          }
+        }
+      },
+      "Room": {
+        "required": [
+          "capacity",
+          "code",
+          "description",
+          "location",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Código de la sala",
+            "example": "R01"
+          },
+          "location": {
+            "type": "string",
+            "description": "Ubicación de la sala",
+            "example": "Biblioteca"
+          },
+          "name": {
+            "type": "string",
+            "description": "Nombre de la sala",
+            "example": "Sala A"
+          },
+          "capacity": {
+            "type": "integer",
+            "description": "Capacidad de la sala",
+            "format": "int32",
+            "example": 1
+          },
+          "description": {
+            "type": "string",
+            "description": "Descripción de la sala",
+            "example": "Sala de estudio facilitada por hora"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
   }
+}

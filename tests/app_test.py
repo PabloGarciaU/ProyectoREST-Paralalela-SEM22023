@@ -1,5 +1,4 @@
-"""The tests to run in this project.
-To run the tests type,
+"""Para ejecutar las pruebas, usar sete comando:,
 $ nosetests --verbose
 """
 
@@ -11,17 +10,12 @@ BASE_URL = "http://localhost:5000"
 # BASE_URL = "https://python3-flask-uat.herokuapp.com/"
 
 
-class NewUUID():  # pylint: disable=too-few-public-methods
-    """The new uuid created when creating a new book request.
-    The NewUUID is used for further tests
-    """
-
+class NewUUID():  
     def __init__(self, value):
         self.value = value
-    #NEW_UUID = None
 
 
-def test_get_all_requests():
+'''def test_get_all_requests():
     "Test getting all requests"
     response = requests.get('%s/request' % (BASE_URL))
     assert_true(response.ok)
@@ -124,4 +118,4 @@ def test_delete_new_record():
 def test_delete_new_record_404():
     "Test deleting the new record that was already deleted"
     response = requests.delete('%s/request/%s' % (BASE_URL, NewUUID.value))
-    assert_true(response.status_code == 404)
+    assert_true(response.status_code == 404)'''

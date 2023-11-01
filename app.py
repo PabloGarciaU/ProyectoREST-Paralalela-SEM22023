@@ -9,7 +9,7 @@ from routes import request_api
 
 APP = Flask(__name__)
 
-### Inicio configuracioon swagger ###
+### Configuracioon swagger ###
 SWAGGER_URL = '/swagger'
 API_URL = '/static/swagger.json'
 SWAGGERUI_BLUEPRINT = get_swaggerui_blueprint(
@@ -20,7 +20,6 @@ SWAGGERUI_BLUEPRINT = get_swaggerui_blueprint(
     }
 )
 APP.register_blueprint(SWAGGERUI_BLUEPRINT, url_prefix=SWAGGER_URL)
-### Fin configuracion swagger ###
 
 APP.register_blueprint(request_api.get_blueprint())
 
