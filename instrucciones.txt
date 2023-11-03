@@ -1,0 +1,2 @@
+python -r requirements.txt
+flask run
