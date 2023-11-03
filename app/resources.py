@@ -1,10 +1,12 @@
 from flask_restx import Resource, Namespace
 
-from .api_models import course_model, student_model, course_imput_model, student_input_model
+from .api_models import course_model, student_model, course_imput_model, student_input_model # clases de prueba
 from .extensions import db
 from .models import Course, Student
 
 ns = Namespace("api")
+
+# Inicio endpoints de prueba
 
 @ns.route("/hello")
 class HelloWorld(Resource):
@@ -60,3 +62,5 @@ class StudentsAPI(Resource):
         db.session.add(student)
         db.session.commit()
         return student, 201
+    
+# Fin endpoints de prueba

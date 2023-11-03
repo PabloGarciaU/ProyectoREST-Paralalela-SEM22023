@@ -2,6 +2,8 @@ from flask_restx import fields
 
 from .extensions import api
 
+# modelos de prueba 
+
 student_model = api.model("Student", {
     "id": fields.Integer,
     "name": fields.String,
