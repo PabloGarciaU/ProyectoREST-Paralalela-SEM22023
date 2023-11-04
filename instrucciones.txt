@@ -1,2 +1,12 @@
 python -r requirements.txt
 flask run
+
+COMANDOS VARIOS
+
+////PARA AÑADIR NUEVAS TABLAS
+from app.models import*
+db.create_all()
+exit()
+
+////PARA AÑADIR UNA SOLO DATO DE SALA
+db.session.add_all(salas)
