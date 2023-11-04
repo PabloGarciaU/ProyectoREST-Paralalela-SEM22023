@@ -2,6 +2,8 @@ from flask_restx import Resource, Namespace
 from .api_models import salas_model, salas_input_model, reservas_model, reservas_input_model, usuarios_model, usuarios_input_model
 from .extensions import db
 from .models import Salas
+from .models import Salas, Reservas
+from app.models import Usuarios
 
 ns = Namespace("api")
 
@@ -98,6 +100,22 @@ class ReservaResource(Resource):
         db.session.delete(reserva)
         db.session.commit()
         return "", 204
+
+@ns.route("/reservas/<string:token>")  # Operación GET para obtener una reserva específica
+class ReservaTokenResource(Resource):
+    @ns.marshal_with(reservas_model)
+    def get(self, token):
+        reserva = Reservas.query.filter_by(token=token).first()
+        return reserva
+    
+@ns.route("/reservas/busqueda")  # Operación GET para obtener la agenda de una sala y fecha dada
+class ReservaBusquedaResource(Resource):
+    @ns.marshal_list_with(reservas_model)
+    def get(self):
+        sala = ns.payload["sala"]
+        fecha = ns.payload["fecha"]
+        reservas = Reservas.query.filter_by(sala=sala, inicio_fecha=fecha).all()
+        return reservas
 
 # Fin endpoints de las reservas
 
