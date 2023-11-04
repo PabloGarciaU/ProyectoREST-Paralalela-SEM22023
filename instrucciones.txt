@@ -1,12 +1,16 @@
+////    PARA INICIAR LA API VERIFICAR QUE EL .flaskenv ESE EN VALOR 0
 python -r requirements.txt
 flask run
 
 COMANDOS VARIOS
 
-////PARA AÑADIR NUEVAS TABLAS
+////    PARA AÑADIR NUEVAS TABLAS
+
 from app.models import*
 db.create_all()
 exit()
 
-////PARA AÑADIR UNA SOLO DATO DE SALA
-db.session.add_all(salas)
+////    PARA COMPROBAR SI SE CREARON LAS TABLAS
+sqlite3 instance/db.sqlite3
+.tables
+CONSULTAS EN SQL EN ADELANTE

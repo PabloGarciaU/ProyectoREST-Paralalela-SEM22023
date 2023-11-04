@@ -15,3 +15,35 @@ salas_input_model = api.model("SalasInput", {
     "nombre": fields.String(required=True),
     "capacidad": fields.Integer(required=True),
 })
+
+reservas_model = api.model("Reservas", {
+    "token": fields.String,
+    "usuario": fields.String,
+    "sala": fields.String,
+    "inicio_fecha": fields.String,
+    "termino_fecha": fields.String,
+})
+
+reservas_input_model = api.model("ReservasInput", {
+    "token": fields.String(required=True),
+    "usuario": fields.String(required=True),
+    "sala": fields.String(required=True),
+    "inicio_fecha": fields.String(required=True),
+    "termino_fecha": fields.String(required=True),
+})
+
+usuarios_model = api.model("Usuarios", {
+    "nombre": fields.String,
+    "apellido": fields.String,
+    "correo": fields.String,
+    "contrasena": fields.String,
+    "rol": fields.String,
+})
+
+usuarios_input_model = api.model("UsuariosInput", {
+    "nombre": fields.String(required=True),
+    "apellido": fields.String(required=True),
+    "correo": fields.String(required=True),
+    "contrasena": fields.String(required=True),
+    "rol": fields.String(required=True),
+})
