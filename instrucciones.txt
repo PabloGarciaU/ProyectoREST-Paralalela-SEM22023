@@ -14,3 +14,27 @@ exit()
 sqlite3 instance/db.sqlite3
 .tables
 CONSULTAS EN SQL EN ADELANTE
+
+////    URL PARA EL LOGIN
+http://localhost:5000/login/google/authorized
+
+////    ID-CLIENTE
+32644728196-qs8nr857m20s5ornv5akv34v837gs6ge.apps.googleusercontent.com
+
+////    SECRETO-CLIENTE
+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
+
+//// JSON COMPLETO
+
+"web":"client_id":"32644728196-qs8nr857m20s5ornv5akv34v837gs6ge.apps.googleusercontent.com","project_id":"prestapi-compparalela-2sem2023","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://oauth2.googleapis.com/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs","client_secret":"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","redirect_uris":["http://localhost:5000/login/google/authorized"]}}
+    "web": {
+        "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+        "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+        "client_id": "32644728196-qs8nr857m20s5ornv5akv34v837gs6ge.apps.googleusercontent.com",
+        "client_secret": "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",
+        "project_id": "prestapi-compparalela-2sem2023",
+        "redirect_uris": [
+            "http://localhost:5000/login/google/authorized"
+        ],
+        "token_uri": "https://oauth2.googleapis.com/token"
+    }
