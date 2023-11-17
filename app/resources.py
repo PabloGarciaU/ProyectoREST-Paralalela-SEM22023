@@ -1,15 +1,24 @@
+from flask import redirect, url_for
 from flask_restx import Resource, Namespace
 from .api_models import salas_model, salas_input_model, reservas_model, reservas_input_model, usuarios_model, usuarios_input_model
 from .extensions import db
 from .models import Salas
 from .models import Salas, Reservas
 from app.models import Usuarios
+from .auth import login_required
 
 ns = Namespace("api")
+
+@ns.route("/")  # Nueva ruta para redirigir al index
+class IndexResource(Resource):
+    def get(self):
+        # Puedes redirigir a la ruta que prefieras, en este caso, "index"
+        return redirect(url_for("index"))
 
 # Inicio endpoints de las salas
 
 @ns.route("/salas")  # Operación GET para obtener la lista de salas y POST para crear una sala
+
 class SalasResource(Resource):
     @ns.marshal_list_with(salas_model)
     def get(self):
