@@ -154,7 +154,12 @@ class UsuarioResource(Resource):
     @ns.expect(usuarios_input_model)
     @ns.marshal_with(usuarios_model)
     def put(self, id):
-        
+        usuario = Usuarios.query.get_or_404(id)
+        usuario.nombre = ns.payload["nombre"]
+        usuario.correo = ns.payload["correo"]
+        usuario.contrasena = ns.payload["contrasena"]
+        usuario.public_id = ns.payload["public_id"]
+        usuario.google_id = ns.payload["google_id"]
         db.session.commit()
         return usuario
 

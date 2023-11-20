@@ -20,7 +20,6 @@ google = oauth.register(
     client_kwargs={'scope': 'openid profile email'},
 )
 
-
 def login_required(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
@@ -46,13 +45,3 @@ def logout():
     session.pop('google_token', None)
     session.pop('profile', None)
     return redirect(url_for('index'))
-
-@app.route('/')
-@login_required
-def index():
-    profile = session['profile']
-    # Aquí puedes usar la información del perfil como desees
-    return render_template('index.html', profile=profile)
-
-if __name__ == '__main__':
-    app.run(debug=True)
