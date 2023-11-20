@@ -1,10 +1,7 @@
 from functools import wraps
-from flask import Flask, session, redirect, url_for, request, jsonify
+from flask import session, redirect, url_for, render_template
 from authlib.integrations.flask_client import OAuth
-from .extensions import api
-
-app = Flask(__name__)
-app.config['SECRET_KEY'] = 'tu_clave_secreta'  # Reemplaza con tu clave secreta
+from . import app 
 
 oauth = OAuth()
 
@@ -28,20 +25,30 @@ def login_required(func):
         return func(*args, **kwargs)
     return wrapper
 
+
 @app.route('/login')
 def login():
-    return google.authorize_redirect(url_for('auth', _external=True))
+    redirect_uri = url_for('auth', _external=True)
+    return google.authorize_redirect(redirect_uri)
 
 @app.route('/auth')
 def auth():
     token = google.authorize_access_token()
-    user_info = google.parse_id_token(token)
-    session['google_token'] = (token, '')
-    session['profile'] = user_info
+    resp = google.get('userinfo')
+    user_info = resp.json()
+
+    # Puedes almacenar información del usuario en la sesión si es necesario
+    session['google_token'] = token
+    session['user_info'] = user_info
+
+    # Aquí podrías redirigir a la página principal o a donde desees
     return redirect(url_for('index'))
 
 @app.route('/logout')
 def logout():
+    # Eliminar la información del usuario de la sesión
     session.pop('google_token', None)
-    session.pop('profile', None)
+    session.pop('user_info', None)
+
+    # Luego redirige a la página de inicio o a donde desees
     return redirect(url_for('index'))
