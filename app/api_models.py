@@ -34,16 +34,17 @@ reservas_input_model = api.model("ReservasInput", {
 
 usuarios_model = api.model("Usuarios", {
     "nombre": fields.String,
-    "apellido": fields.String,
     "correo": fields.String,
     "contrasena": fields.String,
-    "rol": fields.String,
+    "public_id": fields.String,
+    "google_id": fields.String,
+
 })
 
 usuarios_input_model = api.model("UsuariosInput", {
     "nombre": fields.String(required=True),
-    "apellido": fields.String(required=True),
     "correo": fields.String(required=True),
     "contrasena": fields.String(required=True),
-    "rol": fields.String(required=True),
+    "public_id": fields.String(required=True),
+    "google_id": fields.String(required=True),
 })

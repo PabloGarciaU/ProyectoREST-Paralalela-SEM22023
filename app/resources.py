@@ -5,15 +5,8 @@ from .extensions import db
 from .models import Salas
 from .models import Salas, Reservas
 from app.models import Usuarios
-from .auth import login_required
 
 ns = Namespace("api")
-
-@ns.route("/")  # Nueva ruta para redirigir al index
-class IndexResource(Resource):
-    def get(self):
-        # Puedes redirigir a la ruta que prefieras, en este caso, "index"
-        return redirect(url_for("index"))
 
 # Inicio endpoints de las salas
 
@@ -142,10 +135,10 @@ class UsuariosResource(Resource):
     def post(self):
         usuario = Usuarios(
             nombre=ns.payload["nombre"],
-            apellido=ns.payload["apellido"],
             correo=ns.payload["correo"],
             contrasena=ns.payload["contrasena"],
-            rol=ns.payload["rol"]
+            public_id=ns.payload["public_id"],
+            google_id=ns.payload["google_id"]
         )
         db.session.add(usuario)
         db.session.commit()
@@ -161,12 +154,7 @@ class UsuarioResource(Resource):
     @ns.expect(usuarios_input_model)
     @ns.marshal_with(usuarios_model)
     def put(self, id):
-        usuario = Usuarios.query.get_or_404(id)
-        usuario.nombre = ns.payload["nombre"]
-        usuario.apellido = ns.payload["apellido"]
-        usuario.correo = ns.payload["correo"]
-        usuario.contrasena = ns.payload["contrasena"]
-        usuario.rol = ns.payload["rol"]
+        
         db.session.commit()
         return usuario
 

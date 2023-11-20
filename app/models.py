@@ -3,10 +3,10 @@ from .extensions import db
 class Usuarios(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nombre = db.Column(db.String(50))
-    apellido = db.Column(db.String(50))
     correo = db.Column(db.String(50))
-    contrasena = db.Column(db.String(50))
-    rol = db.Column(db.String(50))
+    contrasena = db.Column(db.String(200))
+    public_id = db.Column(db.String(200))
+    google_id = db.Column(db.String(200))
 
 class Salas(db.Model):
     id = db.Column(db.Integer, primary_key=True)
