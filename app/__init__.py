@@ -1,5 +1,5 @@
 from flask import Flask
-from .extensions import api, db
+from .extensions import api, db, jwt
 from .resources import ns
 from datetime import timedelta  
 
@@ -27,6 +27,9 @@ def create_app():
     
     # Inicialización de la extensión SQLAlchemy en la aplicación
     db.init_app(app)
+
+    # Inicialización de la extensión JWT en la aplicación
+    jwt.init_app(app)
 
     # Agregar un espacio de nombres (namespace) a la API
     api.add_namespace(ns)

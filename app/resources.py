@@ -1,18 +1,26 @@
-from flask import redirect, url_for
 from flask_restx import Resource, Namespace
+from flask_jwt_extended import jwt_required
 from .api_models import salas_model, salas_input_model, reservas_model, reservas_input_model, usuarios_model, usuarios_input_model
 from .extensions import db
-from .models import Salas
 from .models import Salas, Reservas
 from app.models import Usuarios
 
-ns = Namespace("api")
+authorizations = {
+    "jsonWebToken": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization",
+    }
+}
+ns = Namespace("api", authorizations=authorizations, description="API-PROYECTOREST-PARALELA-SEM22023 PROF. Sebastian Salazar")
 
 # Inicio endpoints de las salas
 
 @ns.route("/salas")  # Operación GET para obtener la lista de salas y POST para crear una sala
 
 class SalasResource(Resource):
+    method_decorators = [jwt_required()]
+    @ns.doc(security="jsonWebToken")
     @ns.marshal_list_with(salas_model)
     def get(self):
         salas = Salas.query.all()
