@@ -19,6 +19,9 @@ def create_app():
     # Configuración de la clave secreta de la aplicación
     app.config['SECRET_KEY'] = 'supersecret'
     
+    # Configuración de la clave secreta para JWT
+    app.config["JWT_SECRET_KEY"] = "super-secret"
+
     # Configuración de la URI de la base de datos SQLite
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
 
