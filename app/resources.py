@@ -1,3 +1,4 @@
+from flask import request
 from flask_restx import Resource, Namespace
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from .api_models import salas_model, salas_input_model, reservas_model, reservas_input_model, usuarios_model, usuarios_input_model
@@ -7,7 +8,7 @@ from .models import Salas, Reservas, Usuarios
 # Configuración de la autorización con JWT de google con la API
 
 authorizations = {
-    "jsonWebToken": {
+        "jsonWebToken": {
         "type": "apiKey",
         "in": "header",
         "name": "Authorization",
@@ -114,6 +115,28 @@ class ReservaResource(Resource):
         db.session.commit()
         return "", 204'''
 
+@ns.route("/reservas/busqueda")
+class ReservaBusquedaResource(Resource):
+    @ns.expect(reservas_input_model)
+    @ns.marshal_with(reservas_model)
+    def post(self):
+        # Obtener los parámetros de búsqueda desde el cuerpo de la solicitud
+        parametros_busqueda = request.json
+
+        # Filtrar las reservas según los datos proporcionados en la solicitud
+        reservas = Reservas.query.filter(
+            (Reservas.token == parametros_busqueda.get('token')) |
+            (Reservas.usuario == parametros_busqueda.get('usuario')) |
+            (Reservas.sala == parametros_busqueda.get('sala')) |
+            (Reservas.inicio_fecha == parametros_busqueda.get('inicio_fecha')) |
+            (Reservas.termino_fecha == parametros_busqueda.get('termino_fecha'))
+        ).all()
+
+        if not reservas:
+            ns.abort(404, message="No se encontraron reservas para los parámetros proporcionados")
+
+        return reservas
+
 @ns.route("/reservas/pedirreserva")
 class ReservaPedirResource(Resource):
     method_decorators = [jwt_required()]
@@ -145,15 +168,7 @@ class ReservaPedirResource(Resource):
 
         return reserva, 201
 
-@ns.route("/reservas/busqueda") # Operacion POST, Usando un método POST y un conjunto de atributos, se puede consultar las reservas en función de los parámetros dados
-class ReservaBusquedaResource(Resource):
-    @ns.expect(reservas_input_model)
-    @ns.marshal_with(reservas_model)
-    def post(self):
-        reservas = Reservas.query.filter_by(**ns.payload).all()
-        if not reservas:
-            ns.abort(404, message="No se encontraron reservas para los parámetros proporcionados")
-        return reservas
+
 
 @ns.route("/reservas/<string:sala>/agenda/<string:inicio_fecha>") # Operacion GET, donde a través de un solicitud GET, se debe obtener la agenda para un código de sala y fecha dada.
 class ReservaAgendarResource(Resource):
