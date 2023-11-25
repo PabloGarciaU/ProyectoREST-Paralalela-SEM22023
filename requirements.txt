@@ -1,0 +1,181 @@
+aiohttp==3.8.4
+aiosignal==1.3.1
+alembic==1.11.1
+altair==5.0.1
+aniso8601==9.0.1
+asgiref==3.7.2
+async-timeout==4.0.2
+attrs==23.1.0
+Authlib==0.14.1
+bcrypt==4.0.1
+bidict==0.22.1
+blinker==1.6.2
+Bottleneck @ file:///opt/conda/conda-bld/bottleneck_1657175564434/work
+brotlipy==0.7.0
+cachelib==0.10.2
+cachetools==5.3.1
+certifi==2020.4.5.1
+cffi==1.14.0
+chardet==3.0.4
+charset-normalizer==3.1.0
+click==8.1.3
+colorama==0.4.6
+conda==4.11.0
+conda-package-handling @ file:///croot/conda-package-handling_1690999929514/work
+conda_package_streaming @ file:///croot/conda-package-streaming_1690987966409/work
+contourpy @ file:///opt/conda/conda-bld/contourpy_1663827406301/work
+cryptography==41.0.5
+cycler @ file:///tmp/build/80754af9/cycler_1637851556182/work
+dash==2.10.2
+dash-core-components==2.0.0
+dash-html-components==2.0.0
+dash-table==5.0.0
+dataclasses-json==0.5.8
+decorator==5.1.1
+Django==4.2.3
+dnspython==2.3.0
+dominate==2.8.0
+ecdsa==0.18.0
+email-validator==2.0.0.post2
+entrypoints==0.3
+et-xmlfile==1.1.0
+extensions==0.4
+fastapi==0.65.3
+filelock==3.12.2
+flake8==3.7.9
+Flask==2.3.1
+Flask-Bootstrap==3.3.7.1
+Flask-Cors==3.0.10
+Flask-Dance==7.0.0
+Flask-JWT-Extended==4.5.3
+Flask-Login==0.6.3
+Flask-Migrate==4.0.4
+Flask-MySQLdb==1.0.1
+Flask-OAuthlib==0.9.6
+Flask-RESTful==0.3.10
+flask-restplus==0.13.0
+flask-restx==1.1.0
+Flask-SocketIO==5.3.4
+Flask-SQLAlchemy==3.0.3
+flask-swagger-ui==3.20.9
+Flask-WTF==1.1.1
+fonttools==4.25.0
+frozenlist==1.3.3
+fsspec==2023.6.0
+gitdb==4.0.10
+GitPython==3.1.31
+greenlet==2.0.2
+gunicorn==19.9.0
+h11==0.12.0
+huggingface==0.0.1
+huggingface-hub==0.15.1
+idna==2.9
+importlib-metadata==6.6.0
+importlib-resources @ file:///tmp/build/80754af9/importlib_resources_1625135880749/work
+itsdangerous==2.1.2
+Jinja2==3.1.2
+joblib==1.2.0
+jose==1.0.0
+jsonschema==4.17.3
+jsonschema-specifications==2023.7.1
+kiwisolver @ file:///croot/kiwisolver_1672387140495/work
+langchain==0.0.202
+langchainplus-sdk==0.0.10
+Mako==1.2.4
+markdown-it-py==3.0.0
+MarkupSafe==2.1.2
+marshmallow==3.19.0
+marshmallow-enum==1.5.1
+matplotlib @ file:///croot/matplotlib-suite_1693812469450/work
+mccabe==0.6.1
+mdurl==0.1.2
+mkl-fft==1.3.6
+mkl-random @ file:///work/mkl/mkl_random_1682950433854/work
+mkl-service==2.4.0
+multidict==6.0.4
+munkres==1.1.4
+mypy-extensions==1.0.0
+mysqlclient==2.1.1
+natural==0.2.0
+nltk==3.8.1
+nose==1.3.7
+numexpr @ file:///croot/numexpr_1683221822650/work
+numpy==1.24.3
+oauthlib==3.2.2
+openai==0.27.8
+openai-pygenerator==0.4.1
+openapi-schema-pydantic==1.2.4
+openpyxl==3.0.7
+packaging @ file:///croot/packaging_1693575174725/work
+pandas==2.0.2
+Pillow==9.5.0
+plotly==5.15.0
+ply==3.11
+protobuf==4.23.3
+pyarrow==12.0.1
+pyasn1==0.5.0
+pycodestyle==2.5.0
+pycosat @ file:///croot/pycosat_1666805502580/work
+pycparser==2.20
+pydantic==1.10.9
+pydeck==0.8.1b0
+pyflakes==2.1.1
+Pygments==2.15.1
+PyJWT==2.8.0
+Pympler==1.0.1
+pyOpenSSL @ file:///croot/pyopenssl_1690223430423/work
+pyparsing @ file:///opt/conda/conda-bld/pyparsing_1661452539315/work
+PyQt5-sip==12.11.0
+pyrsistent==0.19.3
+PySocks @ file:///tmp/build/80754af9/pysocks_1605305812635/work
+python-dateutil @ file:///tmp/build/80754af9/python-dateutil_1626374649649/work
+python-dotenv==1.0.0
+python-engineio==4.4.1
+python-jose==3.3.0
+python-socketio==5.8.0
+pytz==2023.3
+pytz-deprecation-shim==0.1.0.post0
+PyYAML==6.0
+referencing==0.30.2
+regex==2023.6.3
+requests==2.23.0
+requests-oauthlib==1.3.1
+rich==13.4.2
+rpds-py==0.10.6
+rsa==4.9
+ruamel-yaml-conda @ file:///tmp/build/80754af9/ruamel_yaml_1616016711199/work
+safetensors==0.3.1
+scikit-learn==1.3.0
+scipy==1.11.2
+sip @ file:///tmp/abs_44cd77b_pu/croots/recipe/sip_1659012365470/work
+six==1.14.0
+smmap==5.0.0
+SQLAlchemy==2.0.12
+sqlparse==0.4.4
+starlette==0.14.2
+streamlit==1.23.1
+tenacity==8.2.2
+threadpoolctl==3.2.0
+tokenizers==0.13.3
+toml @ file:///tmp/build/80754af9/toml_1616166611790/work
+toolz==0.12.0
+tornado @ file:///croot/tornado_1690848263220/work
+tqdm==4.65.0
+transformers==4.30.2
+typing-inspect==0.9.0
+typing_extensions==4.5.0
+tzdata @ file:///croot/python-tzdata_1690578112552/work
+tzlocal==4.3
+urllib3==1.25.8
+URLObject==2.4.3
+uuid==1.30
+uvicorn==0.24.0.post1
+validate-email==1.3
+validators==0.20.0
+visitor==0.1.3
+watchdog==3.0.0
+Werkzeug==2.3.2
+WTForms==3.0.1
+yarl==1.9.2
+zipp==3.15.0
+zstandard @ file:///croot/zstandard_1677013143055/work
